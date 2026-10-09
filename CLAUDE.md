@@ -99,7 +99,8 @@ mid-task.
 
 Note whatever slows or blocks the work (missing permission, awkward tool, flaky command, a step
 that costs more than it gives). Raise it only when it has happened more than once and fixing it is
-clearly worth it; keep raised ones in the project memory's `open-inconveniences.md` with the user's
+clearly worth it; keep raised ones in the project memory's `open-inconveniences.md` (in the repo's
+`.claude/memory/` when it has one) with the user's
 reaction, and repeat open ones at the end of summaries until the user reacts ("not now" items only
 at handovers). Also suggest briefly any way to use fewer tokens or drop heavy steps, with the
 expected saving; don't re-propose what the user declined.
@@ -114,8 +115,9 @@ expected saving; don't re-propose what the user declined.
 - Windows: write text files with LF line endings (Python: `newline='\n'`).
 - Windows: Playwright MCP saves screenshots only under the workspace (e.g. `.playwright-mcp/`).
   Close the tabs you opened when a UI check is done.
-- Cloud sessions: this file, the hooks and the skills come from `install.sh`; the per-project
-  memory (`~/.claude/projects/…`) does not carry over, so keep what matters in the repo.
+- Cloud sessions: this file, the hooks and the skills come from `install.sh`; `~/.claude/projects/…`
+  memory does not carry over. A repo with `.claude/memory/` keeps its project memory there (same
+  file format, index `MEMORY.md`): read the index and write project memories there instead.
 
 ## UI work
 
