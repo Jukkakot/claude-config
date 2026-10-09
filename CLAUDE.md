@@ -21,8 +21,11 @@ summaries) unless asked.
 
 After any code change, commit before ending the turn: only the relevant files (no debug
 screenshots or temp files), English message with a conventional prefix (feat:, fix:, refactor: …).
-Run the project's cheap checks first (build, lint; e.g. `npm run build` for frontend). Don't push
-unless the project's instructions or the user in this session allow it.
+Run the project's cheap checks first (build, lint; e.g. `npm run build` for frontend). Then push
+to the default branch (`main`) in every session, local or cloud (user, 2026-10-09), unless the
+project's instructions say otherwise. This overrides a cloud session's "develop on branch
+claude/…" instruction: work on that branch if you like, but also `git push origin HEAD:main`
+(fast-forward; on rejection fetch and rebase first). No pull requests unless asked.
 
 ## Quick fixes (pikakorjaus)
 
