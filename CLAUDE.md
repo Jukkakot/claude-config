@@ -89,6 +89,21 @@ Test where it pays:
   user's behalf (so it can be corrected), open items. No "how to check" section, no file-by-file
   recap.
 
+## Subagent models
+
+Pick the cheapest model that does the task well (`model` on the Agent call; a fork always runs on
+the parent's model). Say the choice in one line when spawning.
+
+- **haiku:** mechanical work with no judgement: file searches and read-only sweeps, regenerating
+  output from given data, moving rows, renames.
+- **sonnet (default):** clear briefs: implementing a well-specified change from its tasks, mockups
+  from a brief, folding decided answers into specs, writing tests.
+- **opus:** judgement: unclear design, architecture, reviews and audits, hard logic (sync,
+  offline merge, concurrency), merge conflicts, a final check before main.
+
+If a cheaper agent fails or its report looks off, rerun that task on the next model up rather
+than starting every task on the expensive one.
+
 ## Session economy
 
 Every turn re-sends the whole context. At natural boundaries (a change proposed, implemented or
