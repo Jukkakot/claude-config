@@ -190,6 +190,8 @@ Avoid
   "Manage") in navigation.
 - Icon without text when the meaning is not universal; gear or hamburger as a context-menu icon;
   one icon with two meanings; text-like button/link in text colour.
+- Long-press as the only route to an escape hatch ("don't suggest" on a chip, remove a
+  suggestion): it recurs; give it a visible control too.
 - Swipe or long-press as the only route; swipe whose meaning changes by direction or state;
   horizontal swipe colliding with back.
 - Sheet on sheet; handle without a Close button; back that skips a panel or jumps up.

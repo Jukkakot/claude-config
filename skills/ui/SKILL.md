@@ -39,7 +39,8 @@ sources, competitor patterns, common mistakes).
 - **Thumb reach:** daily actions low or central, input at the bottom, primary "+" bottom right.
 - **Quiet help:** suggestions appear when relevant, each dismissible; nothing interrupts.
 - **Consistent:** the same concept looks the same everywhere. New patterns must match existing
-  ones in the app; prefer extending an existing pattern over adding a new one.
+  ones in the app; prefer extending an existing pattern over adding a new one. One word, one
+  meaning across features (keep a short glossary in the project's context when words collide).
 - **Modern, minimal, no clutter** (no gimmicks like emoji reactions).
 
 ## Principles
@@ -75,6 +76,12 @@ Apply on every UI change; for an audit or polish, run through them before and af
   keyboard must not cover the field; `env(safe-area-inset-*)`, `100dvh`; no targets in system
   gesture zones; sheets for short contextual tasks only, never sheet on sheet, with a visible
   close button plus back, drag down and backdrop tap.
+- **Layers:** a modal layer (sheet, dialog) covers or hides persistent chrome (tab bar, FAB, undo
+  line); `inert` alone hides the bug from tests while taps still land on the chrome, so hit-test
+  the topmost element at the sheet's last row.
+- **No nested targets in a moving context:** never put a secondary button (star, chip, toggle)
+  inside a whole-row tap target where the user acts on the move; give it a fixed column at the
+  row edge or make it a non-interactive marker.
 - **Accessibility:** contrast 4.5:1 text, 3:1 large text, icons and states, in both themes; state
   never by colour alone; visible focus ring; focus moves sensibly after delete; add/remove
   announced via `role="status"`; row buttons named with the item ("Delete milk"), always visible;
@@ -90,6 +97,9 @@ Apply on every UI change; for an audit or polish, run through them before and af
 3. Mockups use real content: realistic names, 15+ rows, longest name, empty state, both themes,
    360x780 first, then the smallest and largest width.
 4. Ask about look only with a picture. Judge by what users can do, not by how nice it looks.
+   Before asking, check the mockup's fidelity: one frame per theme against a screenshot of the
+   built app (same controls, tiles, cards in light and dark), or the user chooses on a wrong
+   picture.
 5. Run the design pass below, fix, and tell the user in one short line ("korjattu
    itsekritiikissä: ..."), not the whole list.
 6. After implementing, compare a screenshot of each new screen with the mockup.
@@ -112,10 +122,14 @@ Apply on every UI change; for an audit or polish, run through them before and af
 14. Density fits the screen's use (>= ~10 list rows visible on a reading/list screen).
 15. Depth by surface tone, shadow only on floating elements.
 16. Targets >= 44 px, gaps >= 8 px, input font >= 16 px, safe area, no gesture-zone targets.
-17. Sheets: close button + back + drag down; none on top of another.
+17. Sheets: close button + back + drag down; none on top of another; nothing persistent drawn
+    over them.
+17b. No secondary button nested in a whole-row tap target on move-heavy screens.
 18. Contrast and state cues in both themes; focus visible and moved sensibly.
 19. States covered: empty, loading, error, offline, long name, long list, pressed, selected, disabled.
-20. Seen in both themes, at 360 px and at 200 % text size.
+20. Seen in both themes, at 360 px and at 200 % text size: no mid-word breaks, titles keep ~8+
+    characters, header actions wrap or turn icon-only, fixed chrome (checkbox, tile) does not
+    grow with rem. Automate it so a test fails on these, not only on clipping.
 21. New patterns match existing ones in the app (extend before adding).
 
 ## Checking cheaply
