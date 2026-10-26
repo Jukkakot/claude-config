@@ -27,6 +27,11 @@ project's instructions say otherwise. This overrides a cloud session's "develop 
 claude/…" instruction: work on that branch if you like, but also `git push origin HEAD:main`
 (fast-forward; on rejection fetch and rebase first). No pull requests unless asked.
 
+**CI minutes (user, 2026-10-26):** no CI run without a reason. A workflow on push skips
+docs-only changes (`paths-ignore` for specs, design files, `.claude/**`, `**/*.md`); add this when
+creating or touching a workflow, and flag any other needless runs (duplicate triggers, jobs that
+redo what another job did).
+
 ## Quick fixes (pikakorjaus)
 
 A quick fix goes in as is (no tests, checks, UI check or OpenSpec change), still in its own commit.
