@@ -78,7 +78,9 @@ Test where it pays:
 - UI gets one or two smoke tests per screen. Never assert exact copy; for translations one test
   that a text changes with the language is enough. Spec scenarios don't each need a test.
 - Screenshots only when a layout's look needs judging.
-- The user's own use on the device is the real UI test: list what to try in the summary.
+- The user's own use on the device is the real UI test. They ask what to try when they want to:
+  no "try on the phone" lists in summaries, no phone-check tasks, and nothing waits for a
+  device check (archive a change once it is merged and green) (user, 2026-10-29).
 - When something fails in real use, ask for the log, a screenshot or what happened before fixing
   on a guess.
 
@@ -90,6 +92,9 @@ Test where it pays:
   in a few lines, then the decisions the user needs to make (numbered, at most 3–5, one line each,
   recommendation first). No file lists or links unless asked; the user reads the reply, not the
   files.
+- **Before a round of look or design options:** ask in one line what situation it is for and what
+  bothers the user in the current one, unless they already said. Options built on the real need
+  land in one round (user, 2026-10-29).
 - **After implementing:** what changed (what the user will notice), every decision taken on the
   user's behalf (so it can be corrected), open items. No "how to check" section, no file-by-file
   recap.
@@ -108,6 +113,10 @@ the parent's model). Say the choice in one line when spawning.
 
 If a cheaper agent fails or its report looks off, rerun that task on the next model up rather
 than starting every task on the expensive one.
+
+After merging an agent's branch without conflicts, trust its check run and CI; rerun the checks
+locally only when the merge needed conflict resolution (user, 2026-10-29). Agents commit early and
+often: a crash or a usage limit loses uncommitted worktree work.
 
 ## Session economy
 
