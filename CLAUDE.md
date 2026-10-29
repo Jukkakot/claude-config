@@ -127,6 +127,11 @@ step needs; usually cheaper). With a new session, give a handover of a few lines
 done, the exact next command, open questions, only what is not in the repo or memory. Don't switch
 mid-task.
 
+Once a handover is given, the old session asks nothing more: new questions go to the project's
+question file (or the handover's "Huom" line), work still running in the background is named
+there too, and the reply says the next session picks them up. The user can switch right away
+(user, 2026-10-29).
+
 ## Inconveniences and better ways of working
 
 Note whatever slows or blocks the work (missing permission, awkward tool, flaky command, a step
