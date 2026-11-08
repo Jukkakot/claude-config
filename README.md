@@ -8,6 +8,7 @@ Jukka's global Claude Code setup, shared by the local machine and cloud sessions
 | `hooks/` | `~/.claude/hooks/` | `openspec-guard.py` (OpenSpec first), `heredoc-guard.py` (long heredocs) |
 | `skills/` | `~/.claude/skills/` | `ui` (UI principles, theme, cheap checks), `quickshare` (Samsung Quick Share downloads) |
 | `tools/install_settings.py` | `~/.claude/settings.json` | Adds the hook entries; other settings are kept |
+| (in `install.sh`, cloud only) | `~/.gradle/init.d/central-mirror.gradle.kts`, `~/.gradle/gradle.properties` | Google's Maven Central mirror first (Central answers 429 in the cloud); `robolectricRepoUrl` for Robolectric |
 
 ## Install
 

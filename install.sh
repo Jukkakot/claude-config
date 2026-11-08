@@ -21,4 +21,21 @@ for skill in "$here"/skills/*/; do
   cp -r "$skill" "$dest/skills/$name"
 done
 "$py" "$here/tools/install_settings.py" "$dest"
+
+# Cloud containers: Maven Central answers 429 there (rubikki-solveri, terveyslappu), so Gradle and
+# Robolectric try Google's mirror of it first. Builds that read `robolectricRepoUrl` pass it on as
+# Robolectric's `robolectric.dependency.repo.url`. Never on the local PC.
+if [ "${CLAUDE_CODE_REMOTE:-}" = "true" ] || [ -d /root/.ccr ]; then
+  mirror="https://maven-central.storage-download.googleapis.com/maven2/"
+  mkdir -p "$HOME/.gradle/init.d"
+  cat > "$HOME/.gradle/init.d/central-mirror.gradle.kts" <<EOF
+// Written by claude-config install.sh (cloud only): Maven Central is rate-limited here.
+beforeSettings {
+    pluginManagement.repositories { maven("$mirror") }
+    dependencyResolutionManagement.repositories { maven("$mirror") }
+}
+EOF
+  props="$HOME/.gradle/gradle.properties"
+  grep -q '^robolectricRepoUrl=' "$props" 2>/dev/null || echo "robolectricRepoUrl=$mirror" >> "$props"
+fi
 echo "claude-config installed into $dest"
