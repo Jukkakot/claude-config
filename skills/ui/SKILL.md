@@ -6,7 +6,8 @@ description: UI principles, default taste, light/dark theme rules, design proces
 # UI work
 
 For a new screen or flow also read `references/guidelines.md` (conventions table, evidence with
-sources, competitor patterns, common mistakes).
+sources, competitor patterns, common mistakes). For charts and data files read the matching
+section of the global knowledge bank `~/.claude/knowledge.md` (index first, never the whole file).
 
 ## Theme
 

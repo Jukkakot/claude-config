@@ -5,6 +5,7 @@ Jukka's global Claude Code setup, shared by the local machine and cloud sessions
 | Path | Installed to | What |
 |---|---|---|
 | `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global instructions for every project |
+| `knowledge.md` | `~/.claude/knowledge.md` | Global knowledge bank (index + sections, read by section) |
 | `hooks/` | `~/.claude/hooks/` | `openspec-guard.py` (OpenSpec first), `heredoc-guard.py` (long heredocs) |
 | `skills/` | `~/.claude/skills/` | `ui` (UI principles, theme, cheap checks), `quickshare` (Samsung Quick Share downloads) |
 | `tools/install_settings.py` | `~/.claude/settings.json` | Adds the hook entries; other settings are kept |

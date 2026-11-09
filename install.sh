@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs the global Claude config into ~/.claude: CLAUDE.md, hooks, skills, and the hook entries
+# Installs the global Claude config into ~/.claude: CLAUDE.md, knowledge.md, hooks, skills, and the hook entries
 # in settings.json (other settings are kept). Safe to run again; used by cloud sessions' setup
 # script and locally after editing this repo (Git Bash on Windows).
 set -euo pipefail
@@ -14,6 +14,7 @@ done
 
 mkdir -p "$dest/hooks" "$dest/skills"
 cp "$here/CLAUDE.md" "$dest/CLAUDE.md"
+cp "$here/knowledge.md" "$dest/knowledge.md"
 cp "$here"/hooks/*.py "$dest/hooks/"
 for skill in "$here"/skills/*/; do
   name="$(basename "$skill")"

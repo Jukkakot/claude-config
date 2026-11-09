@@ -17,6 +17,20 @@ install and debug) and point to files for detail (thresholds, constants, field l
 steps). Update a doc only when the map changes. Do NOT create new markdown files (analyses, TODO
 summaries) unless asked.
 
+## Knowledge bank
+
+Every project has a `knowledge.md` (`openspec/context/knowledge.md` in OpenSpec repos, else at the
+repo root; create it with the first finding): general topic knowledge the project relies on, with
+sources; no configuration, versions or other things that go stale. Knowledge that holds in any
+project goes to the global bank `~/.claude/knowledge.md` (source: `knowledge.md` in claude-config;
+add there, commit, push).
+
+- **Never read either file whole.** Both start with an index; find the topic there
+  (`grep -n '^## '`) and read only that section.
+- **Before researching** a topic (web search, docs, trial), read its section in both files first.
+- **After researching**, add what was learnt with its source to the right file and keep its index
+  in step.
+
 ## Committing
 
 After any code change, commit before ending the turn: only the relevant files (no debug
