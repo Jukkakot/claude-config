@@ -17,6 +17,13 @@ install and debug) and point to files for detail (thresholds, constants, field l
 steps). Update a doc only when the map changes. Do NOT create new markdown files (analyses, TODO
 summaries) unless asked.
 
+**README for people (user, 2026-11-09):** the one exception: every project has a short, friendly
+`README.md` at the repo root for a human visitor: what the app is, what it does, how it is used and
+installed, the stack in a line. Light and timeless: no feature lists that go stale, no internals
+(those live in the AI docs), so it rarely needs touching; update it only when the app's purpose or
+the way to get it changes. Add one when a project has none (new projects from the start; existing
+ones only when worked on, not as a sweep).
+
 ## Knowledge bank
 
 Every project has a `knowledge.md` (`openspec/context/knowledge.md` in OpenSpec repos, else at the
