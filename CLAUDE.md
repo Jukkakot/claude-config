@@ -70,6 +70,14 @@ complete.
 proposal and tasks, a delta spec only when behaviour changes, no `design.md`. Bigger change or real
 choices: the full set. Group small related items into one change when that is cheaper.
 
+## Libraries first (user, 2026-11-09)
+
+Before writing a feature yourself (a file format reader, a chart, a parser, a protocol), look for a
+maintained library and use it when one exists; recommend it in the proposal. A library brings its
+other features for free and is already tested; hand-written code needs its own tests and still
+breaks. Size is not a reason to write it yourself: choose between libraries (lighter or fuller) on
+fit, maintenance and licence. Write it yourself only when no suitable library exists, and say why.
+
 ## Testing (hobby projects)
 
 Test where it pays:
