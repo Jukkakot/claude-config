@@ -23,10 +23,13 @@ costs a round on the device.
 ## Flow
 
 1. Draft the change (proposal, delta specs, tasks; design when there are real choices) from what
-   the user said and the existing specs.
+   the user said and the existing specs. Before the review, check the draft yourself against
+   the list in step 2 (states, failures, first run, lifecycle, OS rules the design relies on) and
+   fix what is obvious, so the reviewer spends its effort on what is really hidden.
 2. Rubber duck: spawn one **opus** subagent, read-only, with a fresh context. Give it only the
-   paths of the change, the specs it touches and the project context files, never the chat or
-   your own reasoning (it must not inherit your assumptions). Brief it to:
+   paths of the change and the specs it touches, plus the context files narrowed to the relevant
+   sections (name the headings or line ranges; never a whole long context file), never the chat
+   or your own reasoning (it must not inherit your assumptions). Brief it to:
    - read the change as an implementer who cannot ask anything;
    - list every point where two reasonable implementers would build different things:
      edge cases, errors and failures, empty and first-run states, permissions, timing and
