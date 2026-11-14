@@ -63,6 +63,8 @@ The user answers by voice, often on a phone. Each round:
   - (a) vaihtoehto: mitä siitä seuraa. **Suositus**
   - (b) vaihtoehto: mitä siitä seuraa.
   ```
+- Narrow phone screen: context at most three short sentences, options short enough to fit
+  two or three phone lines, no tables or wide diagrams.
 - Yes/no questions use the same layout with `kyllä` / `ei` as the options.
 - Ask only what depends on the user's taste, needs or own action. If you would pick one answer
   with confidence and it is easy to change later, decide it and list it under "päätin

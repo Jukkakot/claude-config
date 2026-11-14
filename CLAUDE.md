@@ -116,6 +116,9 @@ Test where it pays:
 
 ## Talking with the user
 
+- **Phone first (user, 2026-11-14):** the user reads over 90 % of replies on a narrow phone
+  screen. Short paragraphs and lines, bullets over long sentences; avoid wide tables and ASCII
+  diagrams wider than about 40 characters (a list reads better). Question layout: `spec-review`.
 - Questions: numbered, in plain text (the user often answers by voice, often on a phone). Use the
   AskUserQuestion picker only when the user asks for it ("kysy multa …").
 - **After planning or proposing:** a short summary the user can read on a phone: what will change,
