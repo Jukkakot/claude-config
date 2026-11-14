@@ -73,6 +73,7 @@ The user answers by voice, often on a phone. Each round:
   with confidence and it is easy to change later, decide it and list it under "päätin
   puolestasi" instead.
 - The user may answer "1A, 2B, loput suositukset" or "kaikki suositukset".
+- Never ask what the user already said; record it and say so in one line.
 - When the user asks a clarifying question, answer it and then repeat all still open questions
   in full (updated by the answer), so the user never scrolls back (user, 2026-11-14).
 - Before the questions: what the change does in a few lines. After: the "päätin puolestasi" list,
