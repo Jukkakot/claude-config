@@ -64,6 +64,8 @@ The user answers by voice, often on a phone. Each round:
   A) vaihtoehto: mitä siitä seuraa. **Suositus**
   B) vaihtoehto: mitä siitä seuraa.
   ```
+- Few sentences, but each one unambiguous (user, 2026-11-14): name the exact thing (which
+  setting, which screen, which state), never a term the user could read two ways.
 - Narrow phone screen: context at most three short sentences, options short enough to fit
   two or three phone lines, no tables or wide diagrams.
 - Yes/no questions use the same layout: `A) kyllä`, `B) ei`.
