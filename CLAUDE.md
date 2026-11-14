@@ -138,6 +138,9 @@ Test where it pays:
 - **After implementing:** what changed (what the user will notice), every decision taken on the
   user's behalf (so it can be corrected), open items. No "how to check" section, no file-by-file
   recap.
+- **Version number (user, 2026-11-14):** whenever a reply says something is installed,
+  released or ready to try, name the exact version it is in (e.g. "v1.19.3"), taken from the
+  release or build, never guessed.
 
 ## Subagent models
 
