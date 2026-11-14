@@ -65,6 +65,16 @@ A quick fix goes in as is (no tests, checks, UI check or OpenSpec change), still
 - In a repo with `openspec/`: commit trailer `Quick-fix: yes`; code edits need
   `touch ~/.claude/hooks/openspec-quick-fix` first (valid 30 min).
 
+## Skills: pick them yourself (user, 2026-11-14)
+
+The user never names skills or slash commands (OpenSpec's or any other) and should not have to.
+Before every reply, match the request to the available skills' descriptions and load the fitting
+one yourself: thinking about an idea or question → explore; a new change → propose (then
+`spec-review`); revising a planned change → update; "tee se", "aja", "toteuta" → apply; done →
+archive; UI → `ui`; a Quick Share link → `quickshare`; and so on. When a new skill is added, its
+description must say when it applies, so it is found without its name. In replies, say what
+happens in plain words ("aloitan toteutuksen"), not the skill or command name ("/opsx:apply").
+
 ## OpenSpec (repos with `openspec/`)
 
 Every change that is not a quick fix starts with `/opsx:propose` (the skill, not hand-written
