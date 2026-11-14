@@ -236,7 +236,7 @@ expected saving; don't re-propose what the user declined.
 - Windows: write text files with LF line endings (Python: `newline='\n'`).
 - Windows: Playwright MCP saves screenshots only under the workspace (e.g. `.playwright-mcp/`).
   Close the tabs you opened when a UI check is done.
-- Cloud sessions: this file, the hooks and the skills come from `install.sh`; `~/.claude/projects/…`
+- Cloud sessions: this file, the hooks and the skills come from `install.sh`, rerun at every session start by the `config-refresh.py` hook (cached containers skip the setup script); `~/.claude/projects/…`
   memory does not carry over. A repo with `.claude/memory/` keeps its project memory there (same
   file format, index `MEMORY.md`): read the index and write project memories there instead.
 

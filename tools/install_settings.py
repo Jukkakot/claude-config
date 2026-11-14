@@ -8,8 +8,9 @@ import os
 import sys
 
 HOOKS = [
-    ("Bash", "heredoc-guard.py"),
-    ("Edit|Write|MultiEdit|NotebookEdit|Bash|PowerShell", "openspec-guard.py"),
+    ("PreToolUse", "Bash", "heredoc-guard.py", 10),
+    ("PreToolUse", "Edit|Write|MultiEdit|NotebookEdit|Bash|PowerShell", "openspec-guard.py", 10),
+    ("SessionStart", "startup", "config-refresh.py", 120),
 ]
 
 
@@ -20,19 +21,20 @@ def main(dest: str) -> None:
         with open(path, encoding="utf-8") as f:
             settings = json.load(f)
     python = sys.executable.replace("\\", "/")
-    pre = settings.setdefault("hooks", {}).setdefault("PreToolUse", [])
-    names = {script for _, script in HOOKS}
+    hooks = settings.setdefault("hooks", {})
+    names = {script for _, _, script, _ in HOOKS}
 
     def ours(entry: dict) -> bool:
         text = json.dumps(entry)
         return any(name in text for name in names)
 
-    pre[:] = [e for e in pre if not ours(e)]
-    for matcher, script in HOOKS:
+    for event in {event for event, _, _, _ in HOOKS}:
+        hooks[event] = [e for e in hooks.get(event, []) if not ours(e)]
+    for event, matcher, script, timeout in HOOKS:
         hook_path = os.path.join(dest, "hooks", script).replace("\\", "/")
-        pre.append({
+        hooks[event].append({
             "matcher": matcher,
-            "hooks": [{"type": "command", "command": python, "args": [hook_path], "timeout": 10}],
+            "hooks": [{"type": "command", "command": python, "args": [hook_path], "timeout": timeout}],
         })
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(settings, f, indent=2)
