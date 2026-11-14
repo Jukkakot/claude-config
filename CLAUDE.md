@@ -83,9 +83,10 @@ Use OpenSpec in every phase, even when the user does not mention it:
 - **Finishing:** `/opsx:archive`, so the specs stay true.
 
 **Specify first, then one-shot.** Specify a new change with the user until nothing that affects
-behaviour or look is open: propose, then ask (numbered questions in text; the user often answers
-by voice) and fold the answers in. Implementation starts only when the user agrees the spec is
-complete.
+behaviour or look is open: propose, run the `spec-review` skill (rubber-duck review and the
+question format), ask, and fold the answers in. Implementation starts only when the user agrees
+the spec is complete. Don't hurry to implementation (user, 2026-11-14): the aim is a spec a
+Sonnet implementer gets right in one go.
 
 **Scale the paperwork.** Small change (one area, no real design choices, an hour or two): a short
 proposal and tasks, a delta spec only when behaviour changes, no `design.md`. Bigger change or real
@@ -142,6 +143,31 @@ the parent's model). Say the choice in one line when spawning.
 
 If a cheaper agent fails or its report looks off, rerun that task on the next model up rather
 than starting every task on the expensive one.
+
+Weigh the price of a bug, not only of tokens (user, 2026-11-14): a bug that only shows on the
+user's device costs a test round, a log share and a fix, more than the Opus-Sonnet difference.
+So implementation that the session cannot test (device hardware such as Bluetooth, background
+work and OS power rules, OS lifecycle, real external services) goes to **opus**; logic covered by
+unit tests and plain UI from a complete spec goes to **sonnet**. Give the reason in the one line.
+
+## Master session (user, 2026-10-25, global 2026-11-14)
+
+Development runs from one master session that talks with the user and starts subagents; every
+session is the master unless the user says otherwise. Subagents run in the background, so the
+user can specify and plan with the master while they work:
+
+- One subagent per task (an OpenSpec change to apply, a mockup round, research), started with
+  `isolation: "worktree"`; it works and commits on its own worktree branch, never pushes, and
+  reports back: what it did, decisions taken, questions for the user (subagents cannot ask).
+- Run in parallel only tasks that touch different files; tasks on the same change, the same code
+  area or the same `openspec/context/` files run one after another.
+- The master merges each finished branch into `main` (rebase onto current `main` first; rerun the
+  checks only when the merge needed conflict resolution), pushes, deletes the branch, and relays
+  the questions to the user. This is the only exception to "commit straight to `main`".
+- The master keeps its own context small: it reads reports, not transcripts, and does no
+  implementation itself.
+- Each worktree has its own build output; mind a cloud session's disk allowance with more than two
+  at once.
 
 After merging an agent's branch without conflicts, trust its check run and CI; rerun the checks
 locally only when the merge needed conflict resolution (user, 2026-10-29). Agents commit early and
