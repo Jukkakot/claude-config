@@ -124,8 +124,9 @@ Test where it pays:
   on request. Suggest any way to shorten what the user has to read.
 - **Push when the user is needed (user, 2026-11-14):** whenever nothing more will happen until the
   user acts (all work done, a failure, a question that blocks), send a PushNotification (one
-  line, what to act on) as the turn ends. The tool skips it while the user is active in the
-  session. Not for routine progress.
+  line, what to act on) as the turn ends. Never while a background agent, task or scheduled
+  check of this session is still running: the turn that ends after it sends the push. The tool
+  skips it while the user is active in the session. Not for routine progress.
 - Questions: numbered, in plain text (the user often answers by voice, often on a phone). Use the
   AskUserQuestion picker only when the user asks for it ("kysy multa …").
 - **After planning or proposing:** a short summary the user can read on a phone: what will change,
