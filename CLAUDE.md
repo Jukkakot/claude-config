@@ -122,6 +122,9 @@ Test where it pays:
 - **Short by default (user, 2026-11-14):** the user reads little. Lead with the answer or the
   decision needed, cut background they did not ask for, prefer five lines to fifteen; detail only
   on request. Suggest any way to shorten what the user has to read.
+- **Push when the user is needed (user, 2026-11-14):** send a PushNotification (one line, what to
+  act on) when background work ends and the session goes idle: an agent's change merged and
+  released, a failure, or a question that blocks the work. Not for routine progress.
 - Questions: numbered, in plain text (the user often answers by voice, often on a phone). Use the
   AskUserQuestion picker only when the user asks for it ("kysy multa …").
 - **After planning or proposing:** a short summary the user can read on a phone: what will change,
