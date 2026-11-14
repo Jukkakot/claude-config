@@ -205,7 +205,8 @@ session's details) or **a new session** (clean boundary, the repo and memory hol
 step needs; usually cheaper). With a new session, give a handover of a few lines to paste: commits
 done, the exact next command, open questions, only what is not in the repo or memory. Don't switch
 mid-task. Put the handover (and any prompt meant for another session) alone in one fenced code
-block, so the app's copy button copies exactly it (user, 2026-11-09).
+block, so the app's copy button copies exactly it (user, 2026-11-09). Never a `>` quote or plain
+text: only a fenced block has the copy button (user repeated this, 2026-11-14).
 
 Once a handover is given, the old session asks nothing more: new questions go to the project's
 question file (or the handover's "Huom" line), work still running in the background is named
