@@ -50,10 +50,23 @@ costs a round on the device.
 
 The user answers by voice, often on a phone. Each round:
 
-- At most 5 to 7 questions, numbered, one or two lines each, the most important first.
-- Each question names the options with letters, the recommended one first and marked:
-  `3. Mitä tehdään kun X? (a) Y, suositus (b) Z`
-- Yes/no questions say the default: `4. Näytetäänkö X? kyllä/ei, suositus kyllä`
+- At most 5 to 7 questions, numbered, the most important first.
+- Each question stands on its own (user, 2026-11-14): one or two plain sentences of context
+  first (what the thing is, where the user would see it, why it matters), with no unexplained
+  terms or option names; then the question on its own line; then the options as a bullet
+  list, one per line, each saying what the user would notice, the recommended one first:
+
+  ```
+  **1. Otsikko**
+  Konteksti: mikä tämä on ja miksi sillä on väliä, arkikielellä.
+  Kysymys?
+  - (a) vaihtoehto: mitä siitä seuraa. **Suositus**
+  - (b) vaihtoehto: mitä siitä seuraa.
+  ```
+- Yes/no questions use the same layout with `kyllä` / `ei` as the options.
+- Ask only what depends on the user's taste, needs or own action. If you would pick one answer
+  with confidence and it is easy to change later, decide it and list it under "päätin
+  puolestasi" instead.
 - The user may answer "1a, 2b, loput suositukset" or "kaikki suositukset".
 - Before the questions: what the change does in a few lines. After: the "päätin puolestasi" list,
   one line each, so the user can correct any of them.
