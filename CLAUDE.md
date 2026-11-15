@@ -159,6 +159,10 @@ Test where it pays:
   in a few lines, then the decisions the user needs to make (numbered, at most 3–5, one line each,
   recommendation first). No file lists or links unless asked; the user reads the reply, not the
   files.
+- **Decide the obvious yourself (user, 2026-11-15):** ask only what is really the user's taste
+  or changes what they will notice in a way they could disagree with. Common conventions
+  (Material/platform defaults, a red delete, one undo rule, uniform row sizes, button hierarchy)
+  are decided by you and listed as "decisions taken" in the summary. Aim for 0–3 questions.
 - **Before a round of look or design options:** ask in one line what situation it is for and what
   bothers the user in the current one, unless they already said. Options built on the real need
   land in one round (user, 2026-10-29).
