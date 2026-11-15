@@ -120,7 +120,9 @@ Test where it pays:
 - Screenshots only when a layout's look needs judging.
 - The user's own use on the device is the real UI test. They ask what to try when they want to:
   no "try on the phone" lists in summaries, no phone-check tasks, and nothing waits for a
-  device check (archive a change once it is merged and green) (user, 2026-10-29).
+  device check (user, 2026-10-29). Archive a change right after its code is merged to `main`
+  and pushed, without waiting for CI (user, 2026-11-15: CI has not failed so far); a scheduled
+  CI check still reports the version and fixes a failure in a new commit.
 - When something fails in real use, ask for the log, a screenshot or what happened before fixing
   on a guess.
 
@@ -132,14 +134,12 @@ Test where it pays:
 - **Short by default (user, 2026-11-14):** the user reads little. Lead with the answer or the
   decision needed, cut background they did not ask for, prefer five lines to fifteen; detail only
   on request. Suggest any way to shorten what the user has to read.
-- **Push when the user is needed (user, 2026-11-14):** whenever nothing more will happen until the
-  user acts (all work done, a failure, a question that blocks), send a PushNotification (one
-  line, what to act on) as the turn ends. Never while a background agent, task or scheduled
-  check of this session is still running: the turn that ends after it sends the push. Not for
-  routine progress. **Always, even when the user may be watching** (user, 2026-11-15, replaces
-  the 2026-11-14 "skip when watching" rule): every turn that ends waiting for the user sends the
-  push, also a quick answer to a message they just sent, until the user says otherwise. A turn
-  started by a background result or a scheduled check that ends waiting for the user must push.
+- **Push at the end of every turn (user, 2026-11-15, replaces all earlier push rules):** every
+  turn ends with a PushNotification (one line: what is done, what the user should act on, or what
+  is still running and when it reports). No exceptions for "the user just wrote", "still
+  watching" or "a background agent or scheduled check is still running"; the tool itself skips
+  the push when the app is in the foreground. The user must never have to guess whether work is
+  done.
 - **Every question to the user, in every reply, uses this exact layout** (user repeated it,
   2026-11-15; not only inside `spec-review`: also ad hoc questions, clarifications and one-off
   choices). Check each question against it before sending:
