@@ -128,7 +128,7 @@ Test where it pays:
 
 - **Phone first (user, 2026-11-14):** the user reads over 90 % of replies on a narrow phone
   screen. Short paragraphs and lines, bullets over long sentences; avoid wide tables and ASCII
-  diagrams wider than about 40 characters (a list reads better). Question layout: `spec-review`.
+  diagrams wider than about 40 characters (a list reads better). Question layout: below.
 - **Short by default (user, 2026-11-14):** the user reads little. Lead with the answer or the
   decision needed, cut background they did not ask for, prefer five lines to fifteen; detail only
   on request. Suggest any way to shorten what the user has to read.
@@ -140,8 +140,22 @@ Test where it pays:
   reliably know that the app is open, so skip the push when the turn answers a message the user
   sent a few minutes ago and finished quickly; push when the turn was started by a scheduled
   check or a background result, or ran long (about 5 min or more) after their message.
-- Questions: numbered, in plain text (the user often answers by voice, often on a phone). Use the
-  AskUserQuestion picker only when the user asks for it ("kysy multa …").
+- **Every question to the user, in every reply, uses this exact layout** (user repeated it,
+  2026-11-15; not only inside `spec-review`: also ad hoc questions, clarifications and one-off
+  choices). Check each question against it before sending:
+
+  ```
+  **1. Otsikko**
+  Konteksti: 1–3 lyhyttä lausetta, mikä tämä on ja missä sen näkee.
+  Kysymys?
+  A) vaihtoehto: mitä siitä seuraa. **Suositus**
+  B) vaihtoehto: mitä siitä seuraa.
+  ```
+
+  Numbers are questions, capital letters `A)`, `B)` are options, one per line, no bullets,
+  recommendation first and marked; yes/no is `A) kyllä` / `B) ei`; at most 5–7 questions; the
+  user answers "1A, 2B" or "kaikki suositukset". Plain text, never the AskUserQuestion picker
+  unless the user asks for it ("kysy multa …").
 - **After planning or proposing:** a short summary the user can read on a phone: what will change,
   in a few lines, then the decisions the user needs to make (numbered, at most 3–5, one line each,
   recommendation first). No file lists or links unless asked; the user reads the reply, not the
