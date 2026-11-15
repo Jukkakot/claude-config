@@ -134,12 +134,11 @@ Test where it pays:
 - **Short by default (user, 2026-11-14):** the user reads little. Lead with the answer or the
   decision needed, cut background they did not ask for, prefer five lines to fifteen; detail only
   on request. Suggest any way to shorten what the user has to read.
-- **Push at the end of every turn (user, 2026-11-15, replaces all earlier push rules):** every
-  turn ends with a PushNotification (one line: what is done, what the user should act on, or what
-  is still running and when it reports). No exceptions for "the user just wrote", "still
-  watching" or "a background agent or scheduled check is still running"; the tool itself skips
-  the push when the app is in the foreground. The user must never have to guess whether work is
-  done.
+- **Push only when everything is idle (user, 2026-11-15, replaces all earlier push rules):** send
+  a PushNotification at the end of a turn only when nothing is running any more: no background
+  agent, build, scheduled check or other work this session is waiting for. Then always send it
+  (one line: what is done and what the user should act on). While anything still runs, no push;
+  the push comes from the turn where the last of it finishes.
 - **Every question to the user, in every reply, uses this exact layout** (user repeated it,
   2026-11-15; not only inside `spec-review`: also ad hoc questions, clarifications and one-off
   choices). Check each question against it before sending:
