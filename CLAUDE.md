@@ -136,10 +136,10 @@ Test where it pays:
   user acts (all work done, a failure, a question that blocks), send a PushNotification (one
   line, what to act on) as the turn ends. Never while a background agent, task or scheduled
   check of this session is still running: the turn that ends after it sends the push. Not for
-  routine progress. **Not when the user is watching** (user, 2026-11-14): the tool does not
-  reliably know that the app is open, so skip the push when the turn answers a message the user
-  sent a few minutes ago and finished quickly; push when the turn was started by a scheduled
-  check or a background result, or ran long (about 5 min or more) after their message.
+  routine progress. **Always, even when the user may be watching** (user, 2026-11-15, replaces
+  the 2026-11-14 "skip when watching" rule): every turn that ends waiting for the user sends the
+  push, also a quick answer to a message they just sent, until the user says otherwise. A turn
+  started by a background result or a scheduled check that ends waiting for the user must push.
 - **Every question to the user, in every reply, uses this exact layout** (user repeated it,
   2026-11-15; not only inside `spec-review`: also ad hoc questions, clarifications and one-off
   choices). Check each question against it before sending:
