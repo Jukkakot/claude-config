@@ -110,6 +110,13 @@ other features for free and is already tested; hand-written code needs its own t
 breaks. Size is not a reason to write it yourself: choose between libraries (lighter or fuller) on
 fit, maintenance and licence. Write it yourself only when no suitable library exists, and say why.
 
+**Stay on the library (user, 2026-11-16).** The user expects the basics a good library gives
+(markers, zoom, gestures, accessibility, sensible defaults) without asking for each; "our code
+already does what was asked" is no reason to keep hand-written code. When a request is not
+supported natively, say so and propose a solution on top of the library (a renderer, a wrapper,
+an option, a small custom part), as anyone coding by hand would. Never drop or replace the library
+because of one small feature; leaving it needs the user's decision with the trade-offs stated.
+
 ## Testing (hobby projects)
 
 Test where it pays:
