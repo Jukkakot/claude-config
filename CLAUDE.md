@@ -271,7 +271,8 @@ Games made from game-kit also have a `game-ui` skill.
 
 **Terms (user, 2026-11-17):** agree the UI terms with the user at the start of every project: one
 precise word per thing the user sees, each word means one thing, no vague catch-alls (e.g.
-"tuote" for the food parts a meal is made of). Keep the glossary in the project's product context
+"tuote" for the food parts a meal is made of). Two names for one thing in the UI is a bug, not a
+style choice: fix it unless there is a very good reason, and flag any you find. Keep the glossary in the project's product context
 (OpenSpec: `openspec/context/product.md`), check every new UI text against it, and revisit it when
 real use shows how the app is actually used.
 
