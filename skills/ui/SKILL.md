@@ -101,6 +101,15 @@ Apply on every UI change; for an audit or polish, run through them before and af
    Before asking, check the mockup's fidelity: one frame per theme against a screenshot of the
    built app (same controls, tiles, cards in light and dark), or the user chooses on a wrong
    picture.
+   **Picture format for every UI image shown to the user (user, 2026-11-17):** one image per
+   comparison with exactly two frames side by side, the current screen ("Nykyinen", a screenshot
+   of the built app at the same width) and the proposal (its option letter); yellow numbered
+   badges on what changed (on the old frame too where it helps), placed from the elements'
+   bounding boxes in the HTML, never covering the thing they point at; under the frames a numbered
+   list in the user's language, large text, one short line each (what changed, why); a last line
+   on what sets this option apart. Send it with the file tool so it shows on the phone: the user
+   must not have to switch between the picture and the chat. Theme: the one the user uses daily
+   (a project may say e.g. dark only).
 5. Run the design pass below, fix, and tell the user in one short line ("korjattu
    itsekritiikissä: ..."), not the whole list.
 6. After implementing, compare a screenshot of each new screen with the mockup.
