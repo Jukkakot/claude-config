@@ -36,6 +36,13 @@ with the source, and keep the index in step.
 - **Units on every number and axis**; a bare number makes the reader guess.
 - **Direction not by colour alone:** arrows or signs next to changes (accessibility, colour
   blindness); gain/loss colours stay neutral when the "good" direction depends on the user.
+- **Trend line over noisy daily data: LOESS.** Locally weighted regression (tricube weights, 1–2
+  robustness iterations) follows slow change, barely bends for one odd day, and has neither the lag
+  of a trailing moving average nor the edge rules of a centred one. Tie the bandwidth to the period
+  (e.g. a window of max(21, days/6)); break the line over long gaps. Apache Commons Math
+  `LoessInterpolator` needs strictly increasing x and bandwidth·n ≥ 2.
+  ([Cleveland 1979, JASA 74(368)](https://doi.org/10.1080/01621459.1979.10481038),
+  [Commons Math LoessInterpolator](https://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/analysis/interpolation/LoessInterpolator.html))
 
 ## Data files
 
