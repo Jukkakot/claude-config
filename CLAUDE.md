@@ -269,6 +269,12 @@ expected saving; don't re-propose what the user declined.
 Before any UI change or audit, load the `ui` skill (principles, light/dark theme, cheap checks).
 Games made from game-kit also have a `game-ui` skill.
 
+**Terms (user, 2026-11-17):** agree the UI terms with the user at the start of every project: one
+precise word per thing the user sees, each word means one thing, no vague catch-alls (e.g.
+"tuote" for the food parts a meal is made of). Keep the glossary in the project's product context
+(OpenSpec: `openspec/context/product.md`), check every new UI text against it, and revisit it when
+real use shows how the app is actually used.
+
 ## Reusable building blocks (low priority)
 
 The user enjoys reusable pieces across projects (game-kit: Colyseus server, lobby, bots, CI,
