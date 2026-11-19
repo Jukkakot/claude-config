@@ -34,7 +34,12 @@ section of the global knowledge bank `~/.claude/knowledge.md` (index first, neve
   But never lose clarity: no destructive action without Undo, no hidden auto-choice (show the
   value), no gesture without a visible alternative.
 - **Undo, not confirmation or popups.** Confirm only the irreversible and large, naming the
-  consequence on the buttons.
+  consequence on the buttons. Also outside the app: a delete from a notification or widget turns
+  into "Deleted · Undo" for a few seconds; never put a destructive action next to a no-op (OK).
+- **Automatic actions** (saved without a tap) say what was done, with its value and an undo, and
+  the next screen the user opens reflects it ("saved automatically 7.12"); it does not start over.
+- **Reminders** only when the thing is not done yet: at most once a day, neutral words, off
+  switch reachable from the notification; never scold or warn about ordinary choices.
 - **Rare things hidden but findable** (settings, stats, technical info, maintenance modes off by
   default) behind a visible, named opener.
 - **Thumb reach:** daily actions low or central, input at the bottom, primary "+" bottom right.
@@ -50,19 +55,28 @@ Apply on every UI change; for an audit or polish, run through them before and af
 
 - **State legibility:** the user can always answer: what is happening, what can I do, what happened
   last. Never clip elements at container edges unless intended; check mobile portrait, landscape
-  and desktop narrow.
+  and desktop narrow. Anything that ends by itself (timeout, auto-closing result) says why it
+  ended and what was or was not saved, never closes silently after the user waited, and shows
+  its countdown on the button it will press ("Valmis (8)").
 - **Findability:** 3-5 main destinations visible (bottom bar/tabs), no hamburger for daily use;
   hiding max 2 levels; names predict content (not "More"/"Other"); one home for a secondary item;
   home answers "what do I do now" (no menu page); state is saved, the user returns to the same
   place.
 - **Conventions:** use the platform's expected pattern for add, delete, undo, reorder, back,
   close, settings, share (table in the reference); deviate only when clearly better, and then
-  explain. A familiar gesture keeps its meaning everywhere; swipe only for deleting/revealing,
+  explain. One card, one tap target: a chevron promises the whole card; if parts open different
+  places, each part looks like its own control. A familiar gesture keeps its meaning everywhere; swipe only for deleting/revealing,
   same direction everywhere. Familiar icons keep their meaning (⋯ more, gear settings, ≡ drag).
 - **Few taps, clear result:** feedback within 100-150 ms (pressed state), result visible at once;
   wait indicator by duration (<100 ms none, 0.1-1 s hint, 1-10 s spinner, >10 s progress bar);
   button names state the result; do not disable without reason (explain what is missing);
-  no silent changes (say when another user or the system changed something).
+  no silent changes (say when another user or the system changed something). Recognition over
+  recall: recent and frequent choices before typing. In a list where a tap adds at once, the
+  session's adds stay visible after the confirmation fades (mark on the row, running total, a
+  visible Done exit), and the confirmation names any value chosen for the user ("Rahka 200 g
+  added"). Count taps per daily task before and after a redesign; a redesign never adds any.
+- **Data shown honestly:** smoothed values sit next to the raw ones, never replace them; two
+  numbers for the same thing on one screen use the same rounding and say what differs.
 - **Focus/hierarchy:** one primary action per screen (filled primary colour only there); max 3
   size levels and 2 big elements; text in 2-3 shades and 2 weights; most important word first in
   a row; rare/maintenance actions visually quiet; one banner at a time.
@@ -86,7 +100,15 @@ Apply on every UI change; for an audit or polish, run through them before and af
 - **Accessibility:** contrast 4.5:1 text, 3:1 large text, icons and states, in both themes; state
   never by colour alone; visible focus ring; focus moves sensibly after delete; add/remove
   announced via `role="status"`; row buttons named with the item ("Delete milk"), always visible;
-  reduced motion honoured; every gesture has a keyboard/visible alternative.
+  reduced motion honoured; every gesture has a keyboard/visible alternative. Android: targets
+  >= 48x48 dp (custom clickables need `sizeIn(48.dp)`); `contentDescription` says the purpose,
+  unique per list item, `null` for decoration; drag-to-reorder offers TalkBack move actions.
+  Timed messages honour the platform's accessibility timeout (Compose
+  `LocalAccessibilityManager.calculateRecommendedTimeoutMillis`, Android "Time to take action");
+  never swap a library's accessibility-indefinite duration for a fixed timer. Never clamp the
+  font scale to hide overflow. Decimal fields accept both "," and "." (some keyboards grey one
+  out). Error messages sit next to the cause, name the problem and the fix in plain words, keep
+  the input, no blame.
 
 ## Design process
 
@@ -137,10 +159,25 @@ Apply on every UI change; for an audit or polish, run through them before and af
 17b. No secondary button nested in a whole-row tap target on move-heavy screens.
 18. Contrast and state cues in both themes; focus visible and moved sensibly.
 19. States covered: empty, loading, error, offline, long name, long list, pressed, selected, disabled.
-20. Seen in both themes, at 360 px and at 200 % text size: no mid-word breaks, titles keep ~8+
+20. Seen in both themes, at 360 px and at 200 % text size: no mid-word breaks, number and unit
+    joined by a non-breaking space and compound units ("steps/day") never split, titles keep ~8+
     characters, header actions wrap or turn icon-only, fixed chrome (checkbox, tile) does not
     grow with rem. Automate it so a test fails on these, not only on clipping.
 21. New patterns match existing ones in the app (extend before adding).
+22. Entry points outside the app (widget, tile, shortcut, notification) are audited as screens:
+    what state they show (does "done" look different from "waiting"?), where back leads, how long
+    a cold start takes.
+
+## Finding what to improve
+
+The user cannot propose what they do not know to ask for. For an audit or "what could be
+better", combine: (1) a heuristic pass (Nielsen's 10, the platform's guidelines and this skill)
+over specs and screenshots; (2) competitor research: what well-regarded apps in the domain do
+well and what their users complain about (reviews, forums); (3) the usage log as funnels (opens
+-> completions per entry point), discounted when the period was mostly testing new features;
+(4) automated accessibility checks. Every flow logs how it ended (`<flow>.end reason= ms=`), so
+abandoned paths can be explained instead of guessed. Collect findings in one ranked list
+(impact x size) in the project's backlog and let the user pick.
 
 ## Checking cheaply
 
